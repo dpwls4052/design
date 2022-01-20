@@ -1,0 +1,759 @@
+.slide label{display:none}
+
+@media screen and (max-width:530px){
+    .sec_02 .imgArea{
+        display:flex; justify-content: center;
+    }
+    .sec_02 .imgArea img{height:100%; width:auto;}
+}
+@media screen and (max-width:767px){
+    body{overflow-x:hidden;}
+    .main_banner{position:relative;}
+    .main_banner input[type="radio"]{
+        display:none;
+    }
+    .main_banner .slider_wrap{
+        width:300%; transition-duration:0.7s;
+        display:flex; flex-wrap:nowrap;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap{
+        margin-left:0;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap{
+        margin-left:-100%;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap{
+        margin-left:-200%;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap .pagination li:nth-child(1){
+        background-color:#fff;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap .pagination li:nth-child(2){
+        background-color:#fff;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap .pagination li:nth-child(3){
+        background-color:#fff;
+    }
+    .main_banner .slider_wrap .slide{
+        width:33.33%;
+        background: url("../images/ban_01.png") no-repeat center/cover;
+    }
+    .main_banner .slider_wrap .pagination{
+        position:absolute; left:0; bottom:35px;
+        text-align:center; max-width:unset;
+    }
+    .main_banner .slider_wrap .pagination li{
+        display:inline-block; width:7px; height:7px;
+        text-indent:-9999px; background-color:#636466;
+        border-radius:4px;
+    }
+    .main_banner .slider_wrap .pagination li label{
+        display:block;
+    }
+    .main_banner .slide .inner{
+        padding:200px 0 130px;
+    }
+    .main_banner .slide h4{
+        font-size:30px; line-height:40px; color:#fff;
+        margin-bottom:20px;
+    }
+    .main_banner .slide h4 span{
+        display:block;
+    }
+    .main_banner .slide p{
+        font-size:16px; color:#fff; margin-bottom:40px;
+    }
+    /*  
+        !메인 배너 동작 원리
+        
+        선제조건
+         - body의 overflow-x:hidden;
+         - container인 .slider_wrap의 앞에 input radio;
+         - input radio를 겨냥해 선택할 수 있는 label
+         - container인 .slider_wrap의 너비 300%;
+         - .slider_wrap의 display:flex; flex-wrap:nowrap(무조건 한줄 정렬);
+         - .slider_wrap의 .slide의 width:33.33% => 300% 의 33.33% 이므로 브라우저의 너비인 100%
+    
+        동작 원리
+         - input radio 는 name으로 엮여있어 하나가 선택되면 나머지의 선택은 false 처리됨.
+         - css에서 input checkbox, radio 의 :checked를 선택할 수 있음 + ~ 선택자(후위선택자)를 이용해 .slider-wrap을 선택
+         - margin의 %는 부모의 너비를 기준으로 함. 즉 100% 는 브라우저의 너비.
+         - margin-left를 마이너스로 100%를 한다는 것은 좌측으로 브라우저 너비만큼 이동시키는 것.
+    */
+    
+    .sec_01{
+        padding:50px 0;
+    }
+    .sec_01 .leftArea{
+        width:100%;
+    }
+    .sec_01 .leftArea dl{
+        position:relative;
+        padding-bottom:20px; margin-bottom:20px;
+        text-align:center;
+    }
+    .sec_01 .leftArea dt{
+        font-size:20px; color:#080404;
+        margin-bottom:10px; 
+        padding-top:10px;
+        /* before가 absolute상태로 움직일 수 있도록 position:relative 적용 */
+    }
+    .sec_01 .leftArea dt:before{
+        content:''; display:block;
+        height:1px; width:150px; background-color:#080404;
+        position:absolute; left:0; bottom:0;
+
+        /* X축*/
+        left:50%;
+        /* 부모기준 50% */
+        transform:translateX(-50%);
+        /* 자신 기준 50% */
+    }
+    .sec_01 .leftArea dd{
+        font-size:16px; color:#aaa;
+    }
+    .sec_01 ul{
+        width:100%;
+    }
+    .sec_01 ul:after,
+    .sec_04 ul:after{
+        content:''; display:block; clear:both; visibility: hidden;
+    }
+    .sec_01 ul li{
+        margin-bottom:30px; position:relative;
+        padding-left:90px; box-sizing:border-box;
+        background-repeat:no-repeat; background-position:10px center;
+        /* 공통css인 background-repeat과 background-position만 적용 */
+    }
+    .sec_01 ul li:not(:last-child):after{
+        content:''; display:block; position:absolute;
+        bottom:-15px; left:50%; background-color:rgba(0, 0, 0, 0.3);
+        width:90%; height:1px; transform:translateX(-50%);
+    }
+    .sec_01 ul li:nth-child(1){background-image:url("../images/business_01.png");}
+    .sec_01 ul li:nth-child(2){background-image:url("../images/business_02.png");}
+    .sec_01 ul li:nth-child(3){background-image:url("../images/business_03.png");}
+    .sec_01 ul li:nth-child(4){background-image:url("../images/business_04.png");}
+    .sec_01 ul li:nth-child(5){background-image:url("../images/business_05.png");}
+    .sec_01 ul li:nth-child(6){background-image:url("../images/business_06.png");}
+    /* 개별 css인 background-image */
+    
+    .sec_01 ul li dt{
+        font-size:16px; margin-bottom:15px;
+    }
+    .sec_01 ul li dd{
+        font-size:12px; color:#777; line-height:18px;
+    }
+    
+    .sec_02{
+        padding:50px 0;
+    }
+    .sec_02 .inner{
+        overflow:hidden;
+        background-color:rgba(0, 0, 0, 0.8);
+    }
+    .sec_02 .textArea{
+        color:#fff; padding:50px 10px;
+        width:100%; box-sizing: border-box; /*margin:0 auto;*/
+    }
+    .sec_02 .textArea h3{
+        font-size:60px; margin-bottom:45px;
+    }
+    .sec_02 .textArea p{
+        font-size:16px; line-height:30px;
+        margin-bottom:80px;
+    }
+    .sec_02 .textArea .btn_more,
+    .sec_04 .btn_more{
+        color:#cdcdcd; border-color:#cdcdcd;
+        background-image:url("../images/arr_gray.png")
+    }
+    /* .sec_02와 .sec_04의 .btn_more 가 동일한 색상과 동일한 화살표를 가지고 있기에 동시에 작성 */
+    
+    .sec_02 .imgArea{
+        position:absolute; width:100%; height:100%;
+        left:0; top:50%; z-index: -1;
+        transform:translateY(-50%);
+    }
+    .sec_02 .imgArea img{
+        width:100%; 
+    }
+    .sec_02 .imgArea img:nth-child(1){
+        display:none;
+    }
+    .sec_02 .imgArea img:nth-child(3){
+        display:none;
+    }
+    
+    .sec_03 .inner{
+        overflow:hidden;
+    }
+    .sec_03 .bg{
+        text-indent:-9999px;
+        position:absolute;
+        width:300%; height:100%;
+        background-color:#101111;
+        z-index:-1; left: -7%; top:0;
+    }
+    /* 
+        global.css에서  .inner에 position:relative 설정되어있음.
+        div.bg는 position:absolute가 설정되었고, 가장 가까운 relative요소인 .inner를 기준으로 움직이게 됨.
+        left:0 일 때에 .inner의 좌측으로부터 .bg의 좌측이 0만큼 떨어져 있는, 즉 좌측에 붙어있는 상태이고,
+        +가 될 수록 좌측에서 멀어진다(우측으로 이동).
+        -가 된다면 inner의 좌측으로부터 더 좌측으로 조금 씩 이동하게 된다.
+        그리고 width를 300%로 충분히 넓게 주어서, 화면을 채울 수 있도록,
+        계산상으로는 inner의 max-width인 1360px의 3배인 4080의 너비를 가지게 됨.
+    */
+    
+    .sec_03 .imgArea{
+        position:absolute; 
+        width:100%; height:100%;
+        z-index:-1;
+        display:flex; justify-content: center;
+        align-items: center;
+    }
+    .sec_03 .imgArea img{
+        width:70%;
+    }
+    .sec_03 .textArea{
+        padding:80px 10px;
+        background-color:rgba(0,0,0,0.8);
+        color:#fff;
+    }
+    .sec_03 .textArea h3{
+        font-size:30px; margin-bottom:20px;
+    }
+    .sec_03 .textArea p{
+        font-size:13px; line-height:20px; margin-bottom:40px;
+    }
+    
+    .sec_04{padding:40px 0;}
+    .sec_04 .inner{
+        padding:0 20px; box-sizing:border-box;
+    }
+    .sec_04 ul{
+        margin-bottom:60px;box-sizing: border-box;
+    }
+    .sec_04 ul li{
+        margin-bottom:20px; padding-bottom:20px;
+        border-bottom:1px solid rgba(0, 0, 0, 0.3);
+    }
+    .sec_04 ul li:last-child{
+        margin-bottom:0; padding-bottom:0; border-bottom:none;
+    }
+    .sec_04 ul li .imgArea{
+        position:relative;
+        margin-bottom:20px;
+    }
+    .sec_04 ul li .imgArea img{
+        width:100%;
+    }
+    .sec_04 ul li .imgArea span{
+        padding:25px 15px 0; background-color:#fff; font-size:16px;
+        position:absolute; left:0; bottom:0;
+    }
+    .sec_04 ul li .title{
+        font-size:16px; color:#222; margin-bottom:15px;
+        font-weight:400;
+    }
+    .sec_04 ul li .para{
+        font-size:13px; line-height:20px; color:#999;
+    }
+    .sec_04 .btn_more{
+        text-align:left;
+    }
+    
+}
+
+@media screen and (min-width:768px) and (max-width:1023px){
+    body{overflow-x:hidden;}
+    .main_banner{position:relative;}
+    .main_banner input[type="radio"]{
+        display:none;
+    }
+    .main_banner .slider_wrap{
+        width:300%; transition-duration:0.7s;
+        display:flex; flex-wrap:nowrap;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap{
+        margin-left:0;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap{
+        margin-left:-100%;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap{
+        margin-left:-200%;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap .pagination li:nth-child(1){
+        background-color:#fff;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap .pagination li:nth-child(2){
+        background-color:#fff;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap .pagination li:nth-child(3){
+        background-color:#fff;
+    }
+    .main_banner .slider_wrap .slide{
+        width:33.33%;
+        background: url("../images/ban_01.png") no-repeat center/cover;
+    }
+    .main_banner .slider_wrap .pagination{
+        position:absolute; left:0; bottom:80px;
+        text-align:center; max-width:unset;
+    }
+    .main_banner .slider_wrap .pagination li{
+        display:inline-block; width:67px; height:4px;
+        text-indent:-9999px; background-color:#636466;
+    }
+    .main_banner .slider_wrap .pagination li label{
+        display:block;
+    }
+    .main_banner .slide .inner{
+        padding:200px 0 130px;
+    }
+    .main_banner .slide h4{
+        font-size:60px; line-height:65px; color:#fff;
+        margin-bottom:40px;
+    }
+    .main_banner .slide h4 span{
+        display:block;
+    }
+    .main_banner .slide p{
+        font-size:24px; color:#fff; margin-bottom:85px;
+    }
+    /*  
+        !메인 배너 동작 원리
+        
+        선제조건
+         - body의 overflow-x:hidden;
+         - container인 .slider_wrap의 앞에 input radio;
+         - input radio를 겨냥해 선택할 수 있는 label
+         - container인 .slider_wrap의 너비 300%;
+         - .slider_wrap의 display:flex; flex-wrap:nowrap(무조건 한줄 정렬);
+         - .slider_wrap의 .slide의 width:33.33% => 300% 의 33.33% 이므로 브라우저의 너비인 100%
+    
+        동작 원리
+         - input radio 는 name으로 엮여있어 하나가 선택되면 나머지의 선택은 false 처리됨.
+         - css에서 input checkbox, radio 의 :checked를 선택할 수 있음 + ~ 선택자(후위선택자)를 이용해 .slider-wrap을 선택
+         - margin의 %는 부모의 너비를 기준으로 함. 즉 100% 는 브라우저의 너비.
+         - margin-left를 마이너스로 100%를 한다는 것은 좌측으로 브라우저 너비만큼 이동시키는 것.
+    */
+    
+    .sec_01{
+        padding:50px 0;
+    }
+    .sec_01 .leftArea{
+        width:100%;
+    }
+    .sec_01 .leftArea dl{
+        position:relative;
+        padding-bottom:20px; margin-bottom:20px;
+        text-align:center;
+    }
+    .sec_01 .leftArea dt{
+        font-size:20px; color:#080404;
+        margin-bottom:10px; 
+        padding-top:10px;
+        /* before가 absolute상태로 움직일 수 있도록 position:relative 적용 */
+    }
+    .sec_01 .leftArea dt:before{
+        content:''; display:block;
+        height:1px; width:150px; background-color:#080404;
+        position:absolute; left:0; bottom:0;
+
+        /* X축*/
+        left:50%;
+        /* 부모기준 50% */
+        transform:translateX(-50%);
+        /* 자신 기준 50% */
+    }
+    .sec_01 .leftArea dd{
+        font-size:16px; color:#aaa;
+    }
+    .sec_01 ul{
+        width:100%;
+    }
+    .sec_01 ul:after,
+    .sec_04 ul:after{
+        content:''; display:block; clear:both; visibility: hidden;
+    }
+    .sec_01 ul li{
+        float:left; width:48%; margin-bottom:80px;
+        padding-left:90px; box-sizing:border-box;
+        background-repeat:no-repeat; background-position:left 5px;
+        /* 공통css인 background-repeat과 background-position만 적용 */
+    }
+    .sec_01 ul li:not(:nth-child(2n)){
+        margin-right:4%;
+    }
+    .sec_01 ul li:nth-child(1){background-image:url("../images/business_01.png");}
+    .sec_01 ul li:nth-child(2){background-image:url("../images/business_02.png");}
+    .sec_01 ul li:nth-child(3){background-image:url("../images/business_03.png");}
+    .sec_01 ul li:nth-child(4){background-image:url("../images/business_04.png");}
+    .sec_01 ul li:nth-child(5){background-image:url("../images/business_05.png");}
+    .sec_01 ul li:nth-child(6){background-image:url("../images/business_06.png");}
+    /* 개별 css인 background-image */
+    
+
+    
+    .sec_01 ul li dt{
+        font-size:18px; margin-bottom:20px;
+    }
+    .sec_01 ul li dd{
+        font-size:14px; color:#777; line-height:22px;
+    }
+    
+    .sec_02{
+        padding:50px 0;
+    }
+    .sec_02 .inner{
+        overflow:hidden;
+        background-color:rgba(0, 0, 0, 0.8);
+    }
+    .sec_02 .textArea{
+        color:#fff; padding:50px 10px;
+        width:50%; /*margin:0 auto;*/
+    }
+    .sec_02 .textArea h3{
+        font-size:60px; margin-bottom:45px;
+    }
+    .sec_02 .textArea p{
+        font-size:16px; line-height:30px;
+        margin-bottom:80px;
+    }
+    .sec_02 .textArea .btn_more,
+    .sec_04 .btn_more{
+        color:#cdcdcd; border-color:#cdcdcd;
+        background-image:url("../images/arr_gray.png")
+    }
+    /* .sec_02와 .sec_04의 .btn_more 가 동일한 색상과 동일한 화살표를 가지고 있기에 동시에 작성 */
+    
+    .sec_02 .imgArea{
+        position:absolute; width:100%;
+        left:0; top:50%; z-index: -1;
+        transform:translateY(-50%);
+    }
+    .sec_02 .imgArea img{
+        width:100%;
+    }
+    .sec_02 .imgArea img:nth-child(1){
+        display:none;
+    }
+    .sec_02 .imgArea img:nth-child(3){
+        display:none;
+    }
+    
+    .sec_03 .inner{
+        overflow:hidden;
+    }
+    .sec_03 .bg{
+        text-indent:-9999px;
+        position:absolute;
+        width:300%; height:100%;
+        background-color:#101111;
+        z-index:-1; left: -7%; top:0;
+    }
+    /* 
+        global.css에서  .inner에 position:relative 설정되어있음.
+        div.bg는 position:absolute가 설정되었고, 가장 가까운 relative요소인 .inner를 기준으로 움직이게 됨.
+        left:0 일 때에 .inner의 좌측으로부터 .bg의 좌측이 0만큼 떨어져 있는, 즉 좌측에 붙어있는 상태이고,
+        +가 될 수록 좌측에서 멀어진다(우측으로 이동).
+        -가 된다면 inner의 좌측으로부터 더 좌측으로 조금 씩 이동하게 된다.
+        그리고 width를 300%로 충분히 넓게 주어서, 화면을 채울 수 있도록,
+        계산상으로는 inner의 max-width인 1360px의 3배인 4080의 너비를 가지게 됨.
+    */
+    
+    .sec_03 .imgArea{
+        position:absolute; 
+        width:100%; height:100%;
+        z-index:-1;
+        display:flex; justify-content: center;
+        align-items: center;
+    }
+    .sec_03 .imgArea img{
+        width:70%;
+    }
+    .sec_03 .textArea{
+        padding:150px 10px;
+        background-color:rgba(0,0,0,0.8);
+        color:#fff;
+    }
+    .sec_03 .textArea h3{
+        font-size:60px; margin-bottom:30px;
+    }
+    .sec_03 .textArea p{
+        font-size:16px; line-height:30px; margin-bottom:90px;
+    }
+    
+    .sec_04{padding:90px 0 100px; text-align:right;}
+    .sec_04 ul{
+        margin-bottom:60px;
+        text-align:left;
+    }
+    .sec_04 ul li{
+        float:left; width:32%; margin-right:2%;
+    }
+    .sec_04 ul li:last-child{
+        margin-right:0;
+    }
+    .sec_04 ul li .imgArea{
+        position:relative;
+        margin-bottom:50px;
+    }
+    .sec_04 ul li .imgArea img{
+        width:100%;
+    }
+    .sec_04 ul li .imgArea span{
+        padding:25px 15px 0; background-color:#fff; font-size:16px;
+        position:absolute; left:0; bottom:0;
+    }
+    .sec_04 ul li .title{
+        font-size:22px; color:#222; margin-bottom:20px;
+        font-weight:400;
+    }
+    .sec_04 ul li .para{
+        font-size:15px; line-height:26px; color:#999;
+    }
+    .sec_04 .btn_more{
+        text-align:left;
+    }
+    
+}
+
+@media screen and (min-width:1024px){
+    body{overflow-x:hidden;}
+    .main_banner{position:relative;}
+    .main_banner input[type="radio"]{
+        display:none;
+    }
+    .main_banner .slider_wrap{
+        width:300%; transition-duration:0.7s;
+        display:flex; flex-wrap:nowrap;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap{
+        margin-left:0;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap{
+        margin-left:-100%;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap{
+        margin-left:-200%;
+    }
+    .main_banner #slide_01:checked ~ .slider_wrap .pagination li:nth-child(1){
+        background-color:#fff;
+    }
+    .main_banner #slide_02:checked ~ .slider_wrap .pagination li:nth-child(2){
+        background-color:#fff;
+    }
+    .main_banner #slide_03:checked ~ .slider_wrap .pagination li:nth-child(3){
+        background-color:#fff;
+    }
+    .main_banner .slider_wrap .slide{
+        width:33.33%;
+        background: url("../images/ban_01.png") no-repeat center/cover;
+    }
+    .main_banner .slider_wrap .pagination{
+        position:absolute; left:0; bottom:80px;
+        text-align:center; max-width:unset;
+    }
+    .main_banner .slider_wrap .pagination li{
+        display:inline-block; width:67px; height:4px;
+        text-indent:-9999px; background-color:#636466;
+    }
+    .main_banner .slider_wrap .pagination li label{
+        display:block;
+    }
+    .main_banner .slide .inner{
+        padding:300px 0 250px;
+    }
+    .main_banner .slide h4{
+        font-size:75px; line-height:80px; color:#fff;
+        margin-bottom:40px;
+    }
+    .main_banner .slide h4 span{
+        display:block;
+    }
+    .main_banner .slide p{
+        font-size:30px; color:#fff; margin-bottom:135px;
+    }
+    /*  
+        !메인 배너 동작 원리
+        
+        선제조건
+         - body의 overflow-x:hidden;
+         - container인 .slider_wrap의 앞에 input radio;
+         - input radio를 겨냥해 선택할 수 있는 label
+         - container인 .slider_wrap의 너비 300%;
+         - .slider_wrap의 display:flex; flex-wrap:nowrap(무조건 한줄 정렬);
+         - .slider_wrap의 .slide의 width:33.33% => 300% 의 33.33% 이므로 브라우저의 너비인 100%
+    
+        동작 원리
+         - input radio 는 name으로 엮여있어 하나가 선택되면 나머지의 선택은 false 처리됨.
+         - css에서 input checkbox, radio 의 :checked를 선택할 수 있음 + ~ 선택자(후위선택자)를 이용해 .slider-wrap을 선택
+         - margin의 %는 부모의 너비를 기준으로 함. 즉 100% 는 브라우저의 너비.
+         - margin-left를 마이너스로 100%를 한다는 것은 좌측으로 브라우저 너비만큼 이동시키는 것.
+    */
+    
+    .sec_01{
+        padding:100px 0;
+    }
+    .sec_01 .leftArea{
+        width:18%; float:left;
+    }
+    .sec_01 .leftArea dt{
+        font-size:20px; color:#080404;
+        margin-bottom:10px; 
+        padding-top:30px; position:relative;
+        /* before가 absolute상태로 움직일 수 있도록 position:relative 적용 */
+    }
+    .sec_01 .leftArea dt:before{
+        content:''; display:block; position:absolute; left:0; top:0;
+        height:1px; width:70%; background-color:#080404;
+    }
+    .sec_01 .leftArea dd{
+        font-size:16px; color:#aaa;
+    }
+    .sec_01 ul{
+        width:82%; float:left;
+    }
+    .sec_01 ul:after,
+    .sec_04 ul:after{
+        content:''; display:block; clear:both; visibility: hidden;
+    }
+    .sec_01 ul li{
+        float:left; width:30%; margin-bottom:80px;
+        padding-left:90px; box-sizing:border-box;
+        background-repeat:no-repeat; background-position:left 5px;
+        /* 공통css인 background-repeat과 background-position만 적용 */
+    }
+    .sec_01 ul li:nth-child(1){background-image:url("../images/business_01.png");}
+    .sec_01 ul li:nth-child(2){background-image:url("../images/business_02.png");}
+    .sec_01 ul li:nth-child(3){background-image:url("../images/business_03.png");}
+    .sec_01 ul li:nth-child(4){background-image:url("../images/business_04.png");}
+    .sec_01 ul li:nth-child(5){background-image:url("../images/business_05.png");}
+    .sec_01 ul li:nth-child(6){background-image:url("../images/business_06.png");}
+    /* 개별 css인 background-image */
+    
+    .sec_01 ul li:not(:nth-child(3n)){
+        margin-right:5%;
+    }
+    
+    .sec_01 ul li dt{
+        font-size:18px; margin-bottom:20px;
+    }
+    .sec_01 ul li dd{
+        font-size:14px; color:#777; line-height:22px;
+    }
+    
+    .sec_02{
+        padding:100px 0 370px;
+    }
+    .sec_02 .inner > *{
+        float:left;
+    }
+    .sec_02 .textArea{
+        width:30%;
+    }
+    .sec_02 .textArea h3{
+        font-size:60px; margin-bottom:45px;
+    }
+    .sec_02 .textArea p{
+        font-size:16px; line-height:30px; color:#777;
+        margin-bottom:80px;
+    }
+    .sec_02 .textArea .btn_more,
+    .sec_04 .btn_more{
+        color:#cdcdcd; border-color:#cdcdcd;
+        background-image:url("../images/arr_gray.png")
+    }
+    /* .sec_02와 .sec_04의 .btn_more 가 동일한 색상과 동일한 화살표를 가지고 있기에 동시에 작성 */
+    
+    .sec_02 .imgArea{
+        width:70%; position:relative;
+    }
+    .sec_02 .imgArea img{
+        position:absolute; max-width:50%;
+    }
+    .sec_02 .imgArea img:nth-child(1){
+        top:0; right:0;
+    }
+    .sec_02 .imgArea img:nth-child(2){
+        top:0; left:0; transform:translateY(80%);
+    }
+    .sec_02 .imgArea img:nth-child(3){
+        top:0; right:25%; transform:translateY(20%);
+    }
+    
+    .sec_03 .inner{
+        display:flex; align-items:center;
+        /* .sec_03 의 inner에만 display:flex 적용*/
+    }
+    .sec_03 .bg{
+        text-indent:-9999px;
+        position:absolute;
+        width:300%; height:100%;
+        background-color:#101111;
+        z-index:-1; left: -7%; top:0;
+    }
+    /* 
+        global.css에서  .inner에 position:relative 설정되어있음.
+        div.bg는 position:absolute가 설정되었고, 가장 가까운 relative요소인 .inner를 기준으로 움직이게 됨.
+        left:0 일 때에 .inner의 좌측으로부터 .bg의 좌측이 0만큼 떨어져 있는, 즉 좌측에 붙어있는 상태이고,
+        +가 될 수록 좌측에서 멀어진다(우측으로 이동).
+        -가 된다면 inner의 좌측으로부터 더 좌측으로 조금 씩 이동하게 된다.
+        그리고 width를 300%로 충분히 넓게 주어서, 화면을 채울 수 있도록,
+        계산상으로는 inner의 max-width인 1360px의 3배인 4080의 너비를 가지게 됨.
+    */
+    
+    .sec_03 .imgArea{
+        width:60%;
+    }
+    .sec_03 .imgArea img{
+        width:100%;
+    }
+    .sec_03 .textArea{
+        padding:210px 0;
+        width:40%;
+        color:#fff;
+    }
+    .sec_03 .textArea h3{
+        font-size:60px; margin-bottom:30px;
+    }
+    .sec_03 .textArea p{
+        font-size:16px; line-height:30px; margin-bottom:90px;
+    }
+    
+    .sec_04{padding:90px 0 100px; text-align:right;}
+    .sec_04 ul{
+        margin-bottom:60px;
+        text-align:left;
+    }
+    .sec_04 ul li{
+        float:left; width:30%; margin-right:5%;
+    }
+    .sec_04 ul li:last-child{
+        margin-right:0;
+    }
+    .sec_04 ul li .imgArea{
+        position:relative;
+        margin-bottom:50px;
+    }
+    .sec_04 ul li .imgArea img{
+        width:100%;
+    }
+    .sec_04 ul li .imgArea span{
+        padding:25px 15px 0; background-color:#fff; font-size:16px;
+        position:absolute; left:0; bottom:0;
+    }
+    .sec_04 ul li .title{
+        font-size:22px; color:#222; margin-bottom:20px;
+        font-weight:400;
+    }
+    .sec_04 ul li .para{
+        font-size:15px; line-height:26px; color:#999;
+    }
+    .sec_04 .btn_more{
+        text-align:left;
+    }
+    
+}

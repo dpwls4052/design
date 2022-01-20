@@ -1,0 +1,520 @@
+@media screen and (max-width:767px){
+    .inner{width:100%; margin:0 auto; position:relative;}
+    .inner:after,
+    header:after{content:''; display:block; clear:both; visibility:hidden;}
+    
+    header{
+        width:100%;
+        position:absolute; top:0;left:0;
+        background-color:#fff; z-index:1;
+    }
+    /* 
+        header의 inner가 있으므로 header에 width, max-width를 지정하지 않아도 되지만,
+        일반적으로 슬라이더 특성상 클릭-드래그 에 영향을 주기 때문에 헤더 자체를 조절
+    */
+    header h1{
+        float:left; width:180px;
+        padding:20px 40px; box-sizing:border-box;
+    }
+    header h1 a{
+        display:block; 
+    }
+    header h1 a img{
+        width:100%;
+    }
+    
+    header nav{
+        float:right; padding:16px 50px;
+    }
+    header nav label{
+        position:relative; display:block; width:30px; height:35px; box-sizing:border-box;
+    }
+    header nav label:after{
+        content:'menu'; font-family:'Material Icons'; 
+        position:absolute; left:50%; top:50%; transform:translate3d(-50%, -50%, 0);
+        font-size:35px; font-weight:600;
+    }
+    header nav input[type="checkbox"]{
+        display:none;
+    }
+    header nav input[type="checkbox"]:checked ~ ul{
+        height:240px;
+    }
+    header nav ul{
+        position:absolute; right:0; top:100%; background-color:#fff;
+        height:0; overflow:hidden; transition-duration:0.5s;
+        /* transition:all 0.5s; transition:height 0.5s;*/
+    }
+    header nav ul li{
+        padding:0 15px; position:relative; text-align:center;
+    }
+    header nav ul li:last-child{
+        padding: 0 40px 0 15px; background-color:#f5f5f5;
+    }
+    header nav ul li:last-child:after{
+        right:10px;
+    }
+    header nav ul li a{
+        color:#080404; font-size:17px; 
+        line-height:40px;display:block;
+    }
+    header nav ul li img{
+        vertical-align:middle; margin-right:5px;
+    }
+    
+    .btn_more{
+        display:inline-block; padding:13px 40px 13px 15px; min-width:120px;
+        border:1px solid #fff; color:#fff; font-size:12px;
+        background: url("../images/arr_white.png") no-repeat calc(100% - 15px) center/20px;
+        /*
+            btn_more 버튼의 공통 css 적용 
+            다른 border-color와 arr-color를 가진 css는 별도 작성 예정
+        */
+    }
+    
+    
+    footer *{box-sizing:border-box}
+    footer .bg{
+        position:absolute; text-indent:-9999px;
+        width:100%; height:100%; background-color:#21a2dd;
+        z-index:-1; top:0; right:0;
+    }
+    /* 
+        .sec_03 .bg와 동일
+        다만 좌측이냐 우측이냐의 차이
+    */
+    footer .footer_top{
+        padding:30px 0;
+    }
+    footer .footer_top:after,
+    footer .footer_top ul:after{
+        content:''; display:Block; clear:both; visibility:hidden;
+    }
+    footer .footer_top ul{
+        padding:0 10px 15px;
+    }
+    footer .footer_top ul > li{
+        float:left; width:33.33%; text-align: center;
+    }
+    footer .footer_top ul > li > a{
+        color:#fff; font-size:15px; 
+        line-height:24px; display:block;
+    }
+    footer .footer_top ul > li ol{
+        display:none;
+    }
+    footer .footer_top div{
+        padding:0 15px;
+    }
+    footer .footer_top div p:first-of-type{
+        font-size:16px; color:#fff; margin-bottom:15px; line-height:24px;
+    }
+    footer .footer_top div .btn_more{
+        margin-bottom:25px;
+    }
+    footer .footer_top div p:last-of-type{
+        font-size:13px; line-height:20px; color:rgba(255,255,255,0.5);
+    }
+    
+    footer .footer_bottom:after,
+    footer .footer_bottom div:after{
+        content:''; display:block; clear:both; visibility:hidden;
+    }
+    footer .footer_bottom{
+        padding:30px 0; border-top:1px solid rgba(255,255,255,0.2);
+    }
+    footer .footer_bottom div{
+        margin-bottom:20px;
+    }
+    footer .footer_bottom div h2{
+        text-align:center; margin-bottom:20px;
+    }
+    footer .footer_bottom div ul{
+        text-align:center;
+    }
+    footer .footer_bottom div ul li{
+        display:inline-block; line-height:20px; color:#fff; padding:0 10px;
+        font-size:13px;
+    }
+    footer .footer_bottom p{
+        font-size:12px; color:rgba(255,255,255,0.5); text-transform:uppercase; text-align: center;
+    }
+    /* 
+    footer{}
+    footer .inner{}
+    footer .inner .bg{background-color:#21a2dd; position:Absolute; right:-10%; top:0; width:300%; height:100%;z-index:-1;}
+    
+    footer .inner .footer_top{padding:60px 0 50px;}
+    footer .inner .footer_top ul{width:55%; float:left; margin-right:25%}
+    footer .inner .footer_top:after,
+    footer .inner .footer_top ul:after{content:''; display:block ;clear:both; visibility: hidden;}
+    footer .inner .footer_top ul > li{
+        float:left; width:16.66%;
+    }
+    footer .inner .footer_top ul > li > a{
+        color:#fff; font-size:15px; margin-bottom:20px; display:block;
+    }
+    footer .inner .footer_top ul li ol{}
+    footer .inner .footer_top ul li ol li{}
+    footer .inner .footer_top ul li ol li a{
+        color:rgba(255,255,255,0.5); line-height:28px; font-size:14px; display:block;
+    }
+    footer .inner .footer_top div{
+        float:left; width:20%;
+    }
+    footer .inner .footer_bottom{}
+    footer .inner .footer_bottom div{}
+    footer .inner .footer_bottom div h2{}
+    footer .inner .footer_bottom div h2 a{}
+    footer .inner .footer_bottom div ul{}
+    footer .inner .footer_bottom div ul li{}
+    footer .inner .footer_bottom p{} */
+}
+
+@media screen and (min-width:768px) and (max-width:1023px){
+    .inner{width:100%; margin:0 auto; position:relative;}
+    .inner:after,
+    header:after{content:''; display:block; clear:both; visibility:hidden;}
+    
+    header{
+        width:100%; max-width:1360px; 
+        position:absolute; top:50px; left:50%; transform:translateX(-50%);
+        background-color:#fff; z-index:1;
+    }
+    /* 
+        header의 inner가 있으므로 header에 width, max-width를 지정하지 않아도 되지만,
+        일반적으로 슬라이더 특성상 클릭-드래그 에 영향을 주기 때문에 헤더 자체를 조절
+    */
+    header h1{
+        float:left; width:200px;
+        padding:30px 50px; box-sizing:border-box;
+    }
+    header h1 a{
+        display:block; 
+    }
+    header h1 a img{
+        width:100%;
+    }
+    
+    header nav{
+        float:right; padding:25px 50px;
+    }
+    header nav label{
+        position:relative; display:block; width:30px; height:35px; box-sizing:border-box;
+    }
+    header nav label:after{
+        content:'menu'; font-family:'Material Icons'; 
+        position:absolute; left:50%; top:50%; transform:translate3d(-50%, -50%, 0);
+        font-size:35px; font-weight:600;
+    }
+    header nav input[type="checkbox"]{
+        display:none;
+    }
+    header nav input[type="checkbox"]:checked ~ ul{
+        height:300px;
+    }
+    header nav ul{
+        position:absolute; right:0; top:100%; background-color:#fff;
+        height:0; overflow:hidden; transition-duration:0.5s;
+        /* transition:all 0.5s; transition:height 0.5s;*/
+    }
+    header nav ul li{
+        padding:0 15px; position:relative; text-align:center;
+    }
+    header nav ul li:last-child{
+        padding: 0 40px 0 15px; background-color:#f5f5f5;
+    }
+    header nav ul li:last-child:after{
+        right:10px;
+    }
+    header nav ul li a{
+        color:#080404; font-size:17px; 
+        line-height:50px;display:block;
+    }
+    header nav ul li img{
+        vertical-align:middle; margin-right:5px;
+    }
+    
+    .btn_more{
+        display:inline-block; padding:15px 50px 15px 20px; min-width:200px;
+        border:2px solid #fff; color:#fff; font-size:14px;
+        background: url("../images/arr_white.png") no-repeat calc(100% - 15px) center;
+        /*
+            btn_more 버튼의 공통 css 적용 
+            다른 border-color와 arr-color를 가진 css는 별도 작성 예정
+        */
+    }
+    
+    
+    footer *{box-sizing:border-box}
+    footer .bg{
+        position:absolute; text-indent:-9999px;
+        width:300%; height:100%; background-color:#21a2dd;
+        z-index:-1; top:0; right:-10%;
+    }
+    /* 
+        .sec_03 .bg와 동일
+        다만 좌측이냐 우측이냐의 차이
+    */
+    footer .footer_top{
+        padding:60px 0 50px;
+    }
+    footer .footer_top:after,
+    footer .footer_top ul:after{
+        content:''; display:Block; clear:both; visibility:hidden;
+    }
+    footer .footer_top ul{
+        padding:0 30px 15px;
+    }
+    footer .footer_top ul > li{
+        float:left; width:16.66%;
+    }
+    footer .footer_top ul > li > a{
+        color:#fff; font-size:15px; margin-bottom:25px;
+        display:block;
+    }
+    footer .footer_top ul > li ol li a{
+        color:rgba(255,255,255,0.5); font-size:14px; line-height:28px;
+    }
+    footer .footer_top div{
+        padding:0 30px;
+    }
+    footer .footer_top div p:first-of-type{
+        font-size:20px; color:#fff; margin-bottom:25px; line-height:28px;
+    }
+    footer .footer_top div .btn_more{
+        margin-bottom:25px;
+    }
+    footer .footer_top div p:last-of-type{
+        font-size:14px; line-height:23px; color:rgba(255,255,255,0.5);
+    }
+    
+    footer .footer_bottom:after,
+    footer .footer_bottom div:after{
+        content:''; display:block; clear:both; visibility:hidden;
+    }
+    footer .footer_bottom{
+        padding:35px 0 50px; border-top:1px solid rgba(255,255,255,0.2);
+    }
+    footer .footer_bottom div{
+        margin-bottom:20px;
+    }
+    footer .footer_bottom div h2{
+        text-align:center; margin-bottom:20px;
+    }
+    footer .footer_bottom div ul{
+        text-align:center;
+    }
+    footer .footer_bottom div ul li{
+        display:inline-block; line-height:24px; color:#fff; padding:0 20px;
+    }
+    footer .footer_bottom p{
+        font-size:12px; color:rgba(255,255,255,0.5); text-transform:uppercase; text-align: center;
+    }
+    /* 
+    footer{}
+    footer .inner{}
+    footer .inner .bg{background-color:#21a2dd; position:Absolute; right:-10%; top:0; width:300%; height:100%;z-index:-1;}
+    
+    footer .inner .footer_top{padding:60px 0 50px;}
+    footer .inner .footer_top ul{width:55%; float:left; margin-right:25%}
+    footer .inner .footer_top:after,
+    footer .inner .footer_top ul:after{content:''; display:block ;clear:both; visibility: hidden;}
+    footer .inner .footer_top ul > li{
+        float:left; width:16.66%;
+    }
+    footer .inner .footer_top ul > li > a{
+        color:#fff; font-size:15px; margin-bottom:20px; display:block;
+    }
+    footer .inner .footer_top ul li ol{}
+    footer .inner .footer_top ul li ol li{}
+    footer .inner .footer_top ul li ol li a{
+        color:rgba(255,255,255,0.5); line-height:28px; font-size:14px; display:block;
+    }
+    footer .inner .footer_top div{
+        float:left; width:20%;
+    }
+    footer .inner .footer_bottom{}
+    footer .inner .footer_bottom div{}
+    footer .inner .footer_bottom div h2{}
+    footer .inner .footer_bottom div h2 a{}
+    footer .inner .footer_bottom div ul{}
+    footer .inner .footer_bottom div ul li{}
+    footer .inner .footer_bottom p{} */
+}
+
+@media screen and (min-width:1024px){
+    .inner{width:100%; max-width:1360px; margin:0 auto; position:relative;}
+    .inner:after,
+    header:after{content:''; display:block; clear:both; visibility:hidden;}
+    
+    header{
+        width:100%; max-width:1360px; 
+        position:absolute; top:50px; left:50%; transform:translateX(-50%);
+        background-color:#fff; z-index:1;
+    }
+    /* 
+        header의 inner가 있으므로 header에 width, max-width를 지정하지 않아도 되지만,
+        일반적으로 슬라이더 특성상 클릭-드래그 에 영향을 주기 때문에 헤더 자체를 조절
+    */
+    header h1{
+        float:left; width:210px;
+        padding:30px 50px; box-sizing:border-box;
+    }
+    header h1 a{
+        display:block; 
+    }
+    header h1 a img{
+        width:100%;
+    }
+    
+    header nav{
+        float:right; width:70%;
+    }
+    header nav .mui{
+        display:none;
+    }
+    header nav ul{
+        display:flex; justify-content: space-between;
+    }
+    header nav ul li{
+        padding:0 15px; position:relative;
+    }
+    header nav ul li:after{
+         content:'expand_more'; font-family: 'Material Icons'; color:#bfbfbf;
+         /* 
+            ! material-icon
+             - svg방식의 폰트중 font-awesome과 양대산맥
+             - 최근 디자이너, 퍼블리셔들 사이에서 안정성 문제로 인기가 더 많음
+             - 직접 태그로 넣는방식이 아니면 content에 해당 문구 삽입, font-family:'Material Icons' 삽입
+         */
+    
+         /* display:inline-block; vertical-align:middle; margin-left:10px; */
+         position:absolute; right:-10px; top:50%; transform:translateY(-50%);
+    }
+    header nav ul li:last-child{
+        padding: 0 40px 0 15px; background-color:#f5f5f5; border-left:1px solid #ebebeb;
+    }
+    header nav ul li:last-child:after{
+        right:10px;
+    }
+    header nav ul li a{
+        color:#080404; font-size:17px; 
+        line-height:90px;display:block;
+    }
+    header nav ul li img{
+        vertical-align:middle; margin-right:5px;
+    }
+    
+    .btn_more{
+        display:inline-block; padding:15px 50px 15px 20px; min-width:200px;
+        border:2px solid #fff; color:#fff; font-size:14px;
+        background: url("../images/arr_white.png") no-repeat calc(100% - 15px) center;
+        /*
+            btn_more 버튼의 공통 css 적용 
+            다른 border-color와 arr-color를 가진 css는 별도 작성 예정
+        */
+    }
+    
+    
+    footer *{box-sizing:border-box}
+    footer .bg{
+        position:absolute; text-indent:-9999px;
+        width:300%; height:100%; background-color:#21a2dd;
+        z-index:-1; top:0; right:-10%;
+    }
+    /* 
+        .sec_03 .bg와 동일
+        다만 좌측이냐 우측이냐의 차이
+    */
+    footer .footer_top{
+        padding:60px 0 50px;
+    }
+    footer .footer_top:after{
+        content:''; display:Block; clear:both; visibility:hidden;
+    }
+    footer .footer_top ul{
+        float:left; width:55%; margin-right:25%;
+    }
+    footer .footer_top ul > li{
+        float:left; width:16.66%;
+    }
+    footer .footer_top ul > li > a{
+        color:#fff; font-size:15px; margin-bottom:25px;
+        display:block;
+    }
+    footer .footer_top ul > li ol li a{
+        color:rgba(255,255,255,0.5); font-size:14px; line-height:28px;
+    }
+    footer .footer_top div{
+        float:left; width:20%;
+    }
+    footer .footer_top div p:first-of-type{
+        font-size:20px; color:#fff; margin-bottom:25px; line-height:28px;
+    }
+    footer .footer_top div .btn_more{
+        margin-bottom:25px;
+    }
+    footer .footer_top div p:last-of-type{
+        font-size:14px; line-height:23px; color:rgba(255,255,255,0.5);
+    }
+    
+    footer .footer_bottom:after,
+    footer .footer_bottom div:after{
+        content:''; display:block; clear:both; visibility:hidden;
+    }
+    footer .footer_bottom{
+        padding:35px 0 50px; border-top:1px solid rgba(255,255,255,0.2);
+    }
+    footer .footer_bottom div{
+        float:left;
+    }
+    footer .footer_bottom div h2{
+        float:left;
+    }
+    footer .footer_bottom div h2 a{
+        display:block;
+    }
+    footer .footer_bottom div h2 img{
+        width:100%;
+    }
+    footer .footer_bottom div ul{
+        float:left; padding-left:30px;
+    }
+    footer .footer_bottom div ul li{
+        display:inline-block; line-height:24px; color:#fff; padding:0 5px;
+    }
+    footer .footer_bottom p{
+        float:right; font-size:12px; color:rgba(255,255,255,0.5); text-transform:uppercase;
+    }
+    /* 
+    footer{}
+    footer .inner{}
+    footer .inner .bg{background-color:#21a2dd; position:Absolute; right:-10%; top:0; width:300%; height:100%;z-index:-1;}
+    
+    footer .inner .footer_top{padding:60px 0 50px;}
+    footer .inner .footer_top ul{width:55%; float:left; margin-right:25%}
+    footer .inner .footer_top:after,
+    footer .inner .footer_top ul:after{content:''; display:block ;clear:both; visibility: hidden;}
+    footer .inner .footer_top ul > li{
+        float:left; width:16.66%;
+    }
+    footer .inner .footer_top ul > li > a{
+        color:#fff; font-size:15px; margin-bottom:20px; display:block;
+    }
+    footer .inner .footer_top ul li ol{}
+    footer .inner .footer_top ul li ol li{}
+    footer .inner .footer_top ul li ol li a{
+        color:rgba(255,255,255,0.5); line-height:28px; font-size:14px; display:block;
+    }
+    footer .inner .footer_top div{
+        float:left; width:20%;
+    }
+    footer .inner .footer_bottom{}
+    footer .inner .footer_bottom div{}
+    footer .inner .footer_bottom div h2{}
+    footer .inner .footer_bottom div h2 a{}
+    footer .inner .footer_bottom div ul{}
+    footer .inner .footer_bottom div ul li{}
+    footer .inner .footer_bottom p{} */
+}
